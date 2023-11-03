@@ -28,8 +28,11 @@
     "express": "^4.17.1",
     "knex": "^0.21.12",
     "morgan": "^1.10.0",
+    "nano": "^3.4.0",
+    "nanoid": "^3.3.6",
     "pg": "^8.4.2",
     "pino-http": "^5.8.0",
+    "pino-pretty": "^4.8.0",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
