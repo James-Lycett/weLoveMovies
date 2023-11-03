@@ -29,6 +29,7 @@
     "knex": "^0.21.12",
     "morgan": "^1.10.0",
     "pg": "^8.4.2",
+    "pino-http": "^5.8.0",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
