@@ -1,4 +1,4 @@
-if (process.env.USER) require("dotenv").config();
+if (process.env.USER || process.env.USERNAME) require("dotenv").config();
 const cors = require("cors")
 const logger = require("./config/logger")
 const express = require("express");

@@ -7,7 +7,8 @@ const nodeEnv = process.env.NODE_ENV || "development"
 const prettyPrint = nodeEnv === "development"
 
 const logger = pinoHttp({
-    genReqId: (request) => request.headers["x-request-id"] || nanoid(),
+    genReqId: (request) => 
+    request.headers["x-request-id"] || nanoid(), 
     level,
     prettyPrint
 })
