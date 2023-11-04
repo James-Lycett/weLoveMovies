@@ -24,8 +24,7 @@ async function readCritic(updatedCritic_id) {
 */
 async function update(updatedReview) {
     const critic = await readCritic(updatedReview.critic_id)
-
-    const updateReviewData = 
+    
     await knex("reviews as r")
         .where({ review_id: updatedReview.review_id })
         .update(updatedReview);
@@ -48,13 +47,21 @@ async function update(updatedReview) {
             updated_at: critic.updated_at,
         }
     }
-    
+
    return combinedData
 }
 
+function destroy(review_id) {
+    return knex("reviews")
+        .where({ review_id: review_id})
+        .del()
+}
+
+
 module.exports = {
     read,
-    update
+    update,
+    destroy
 }
 
 /* 
