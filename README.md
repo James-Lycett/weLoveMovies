@@ -24,7 +24,7 @@ Example:
     <br>&nbsp;&nbsp;&nbsp;&nbsp;"content": "New content...",
     <br>&nbsp;&nbsp;&nbsp;&nbsp;"score": 3,
     <br>&nbsp;&nbsp;&nbsp;&nbsp;"critic_id": 2,   
-  <br>&nbsp;&nbsp;}
+  &nbsp;&nbsp;}
 <br>}
 
 - DELETE requests to /reviews/:reviewId will delete the review from the database<br>
