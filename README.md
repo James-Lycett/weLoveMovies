@@ -19,13 +19,13 @@ weLoveMovies is a REST API designed to serve theater sites with theater and movi
 
 &nbsp;&nbsp;PUT request body should have the following format:<br>
 &nbsp;&nbsp;Example:
-&nbsp;&nbsp;<br>{
- &nbsp;&nbsp;<br>&nbsp;&nbsp;"data": {
-    &nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;"content": "New content...",
-    &nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;"score": 3,
-    &nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;"critic_id": 2,   
-  &nbsp;&nbsp;&nbsp;&nbsp;}
-&nbsp;&nbsp;<br>}
+&nbsp;&nbsp;&nbsp;&nbsp;<br>{
+ &nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;"data": {
+    &nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;"content": "New content...",
+    &nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;"score": 3,
+    &nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;"critic_id": 2,   
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;<br>}
 
 - DELETE requests to /reviews/:reviewId will delete the review from the database<br>
 
