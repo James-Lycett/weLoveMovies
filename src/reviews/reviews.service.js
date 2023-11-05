@@ -20,7 +20,7 @@ async function readCritic(updatedCritic_id) {
 }
 
 /* 
-    updates review with provided data and nests critic data
+    Updates review with provided data and nests critic data
     inside of returned [updated] review object
 */
 async function update(updatedReview) {
@@ -35,23 +35,20 @@ async function update(updatedReview) {
         .select("*")         
         .where({
             review_id: updatedReview.review_id,          
-        });
+        })
+        .first();
         
     const combinedData = {
-        ...reviewDataAfterUpdate[0],
+        ...reviewDataAfterUpdate,
         critic: {
-            critic_id: critic.critic_id,
-            preferred_name: critic.preferred_name,
-            surname: critic.surname,
-            organization_name: critic.organization_name,
-            created_at: critic.created_at,
-            updated_at: critic.updated_at,
+            ...critic
         }
     }
-
    return combinedData
 }
 
+
+// Deletes review with given reviewId
 function destroy(review_id) {
     return knex("reviews")
         .where({ review_id: review_id})
