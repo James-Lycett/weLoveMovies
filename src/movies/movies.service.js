@@ -62,7 +62,7 @@ async function readReviews(movieId) {
     const critics = await knex("critics as c")
         .select("*");
 
-    const formattedReviews = reviews.map((review) => {
+    const combinedData = reviews.map((review) => {
         const critic = critics.find((critic) => critic.critic_id === review.critic_id)
         const formattedReview = {
              ...review,
@@ -72,7 +72,7 @@ async function readReviews(movieId) {
         }
         return formattedReview
     })
-    return formattedReviews
+    return combinedData
 }
 
 module.exports = {
