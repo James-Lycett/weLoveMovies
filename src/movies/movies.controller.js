@@ -1,11 +1,11 @@
 const service = require("./movies.service")
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary")
 
-// CRUDL request functions
+// CRUDL request functions for /movies route
 
 /*
-    check if any query params then check if query param is 
-    "is_showing"
+    Checks if any query params then check if query param is 
+    "is_showing", if not then it returns 404 "invalid query parameters..."
 */
 function validateQueryParams(req, res, next) {
     const methodName = "validateQueryParams"
@@ -25,9 +25,10 @@ function validateQueryParams(req, res, next) {
         req.log.trace({ __filename, methodName, valid: false})
     }
 }
+
 /*
-    checks is_showing query param and responds with filtered 
-    results or, if no param, responds with all movies
+    Checks is_showing query param and returns filtered 
+    results or, if no param, returns all movies
 */
 async function list(req, res, next) {    
     const methodName = "list"
@@ -48,7 +49,7 @@ async function list(req, res, next) {
 
 /*
     Checks if movie with given movieId exists in records, 
-    otherwise returns an error
+    otherwise returns 404 "Movie cannot be found."
 */
 async function movieExists(req, res, next) {
     const methodName = "movieExists"

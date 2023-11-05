@@ -1,13 +1,15 @@
 const knex = require("../db/connection")
 
-// CRUDL functions for movies database table
-// database written in postgresql
+// CRUDL handling for database table "movies"
+// database written in postgresQL
 
+// Selects all movies
 function list() {
     return knex("movies")
         .select("*")        
 }
 
+// Selects all movies where is_showing=true, references "movies_theaters" table
 function listIsShowing() {
     return knex("movies as m")
       .join("movies_theaters as mt", "mt.movie_id", "m.movie_id")
@@ -15,8 +17,9 @@ function listIsShowing() {
       .where({ "mt.is_showing": true })
       .groupBy("m.movie_id")
       .orderBy("m.movie_id");
-  }
+}
 
+// Selects all movies where is_showing=false, references "movies_theaters" table
 function listIsNotShowing() {
     return knex("movies as m")
         .join("movies_theaters as mt", "mt.movie_id", "m.movie_id")        
@@ -26,6 +29,7 @@ function listIsNotShowing() {
         .orderBy("m.movie_id");
 }
 
+// Selects a single movie by movieId
 function read(movieId) {
     return knex("movies")
         .select("*")
@@ -33,6 +37,7 @@ function read(movieId) {
         .then((createdRecords) => createdRecords[0]);
 }
 
+// Selects all theaters where a single movie by movieId is showing
 function readTheaters(movieId) {
     return knex("theaters as t")
         .join("movies_theaters as mt", "mt.theater_id", "t.theater_id")
@@ -45,47 +50,29 @@ function readTheaters(movieId) {
         .orderBy("t.theater_id")
 }
 
-function readReviews(movieId) {
-    return knex("reviews as r")
-    .select(
-        "r.review_id",
-        "r.content",
-        "r.score",
-        "r.created_at",
-        "r.updated_at",
-        "r.critic_id",
-        "r.movie_id",
-        "c.critic_id as critic.critic_id",
-        "c.preferred_name as critic.preferred_name",
-        "c.surname as critic.surname",
-        "c.organization_name as critic.organization_name",
-        "c.created_at as critic.created_at",
-        "c.updated_at as critic.updated_at"
-    )
-        .join("critics as c", "c.critic_id", "r.critic_id")
-        .where({ "r.movie_id": movieId})
-        .then((results) => {
-            const data = results.map((row) => {
-                return {
-                    review_id: row.review_id,
-                    content: row.content,
-                    score: row.score,
-                    created_at: row.created_at,
-                    updated_at: row.updated_at,
-                    critic_id: row.critic_id,
-                    movie_id: row.movie_id,
-                    critic: {
-                        critic_id: row['critic.critic_id'],
-                        preferred_name: row['critic.preferred_name'],
-                        surname: row['critic.surname'],
-                        organization_name: row['critic.organization_name'],
-                        created_at: row['critic.created_at'],
-                        updated_at: row['critic.updated_at'],
-                    }
-                }
-            })
-            return data
-        })
+/*
+    Selects all reviews for a single movie by movieId and nests
+    critic data in a "critic" property
+*/
+async function readReviews(movieId) {
+    const reviews = await knex("reviews as r")
+        .select("*")
+        .where({ "r.movie_id": movieId });
+    
+    const critics = await knex("critics as c")
+        .select("*");
+
+    const formattedReviews = reviews.map((review) => {
+        const critic = critics.find((critic) => critic.critic_id === review.critic_id)
+        const formattedReview = {
+             ...review,
+            critic: {
+                ...critic
+            }
+        }
+        return formattedReview
+    })
+    return formattedReviews
 }
 
 module.exports = {

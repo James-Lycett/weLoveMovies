@@ -2,8 +2,7 @@ const router = require("express").Router({ mergeParams: true })
 const controller = require("./movies.controller")
 const methodNotAllowed = require("../errors/methodNotAllowed")
 
-// route handling for http requests at /movies route
-
+// request route handling for /movies route
 router.route("/")
     .get(controller.list)
     .all(methodNotAllowed)

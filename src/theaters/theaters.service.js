@@ -2,8 +2,13 @@ const knex = require("../db/connection")
 const reduceProperties = require("../utils/reduce-properties")
 
 
-// theater table database CRUDL handler functions
+// CRUDL handling for database table "theaters"
+// database written in postgresQL
 
+/*
+    Selects all theaters, references "movies_theaters" table for movies showing
+    at each theater, and nests each theater's movies in a movies property
+*/
 function list() {
     return knex("theaters as t")
         .select("t.*", "m.*", "mt.is_showing", "mt.theater_id as mtheater_id")

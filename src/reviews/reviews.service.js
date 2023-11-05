@@ -1,6 +1,7 @@
 const knex = require("../db/connection")
 
 // CRUDL handling for database table "reviews"
+// database written in postgresQL
 
 // selects a single review by review_id
 async function read(reviewId) {

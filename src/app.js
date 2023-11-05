@@ -10,16 +10,18 @@ const homeRouter = require("./home/home.router")
 const notFound = require("./errors/notFound")
 const errorHandler = require("./errors/errorHandler")
 
-
+// logger is a pinoHttp instance for tracing
 app.use(logger)
 app.use(cors())
 app.use(express.json())
 
+// routes
 app.use("/movies", moviesRouter)
 app.use("/reviews", reviewsRouter)
 app.use("/theaters", theatersRouter)
 app.use("/", homeRouter)
 
+// errors
 app.use(notFound)
 app.use(errorHandler)
 
