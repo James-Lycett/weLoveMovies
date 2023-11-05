@@ -1,3 +1,4 @@
+// I didn't write any of this but it's a clever way to make a join table cudos to you
 const generateMoviesTheatersJoins = (movieIds, theaterIds) => {
   return movieIds
     .map(({ movie_id: movieId }) => {
