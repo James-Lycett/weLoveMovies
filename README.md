@@ -17,15 +17,15 @@ weLoveMovies is a REST API designed to serve theater sites with theater and movi
 - GET requests to /reviews/:reviewId where reviewId is a number corresponding to the review_id of a review will return a single review with the given id or 404 if the review does not exist<br>
 - PUT requests to /reviews/:reviewId will update the review with the given id and return the updated review<br>
 
-PUT request body should have the following format:<br>
-Example:
-<br>{
-  <br>&nbsp;&nbsp;"data": {
-    <br>&nbsp;&nbsp;&nbsp;&nbsp;"content": "New content...",
-    <br>&nbsp;&nbsp;&nbsp;&nbsp;"score": 3,
-    <br>&nbsp;&nbsp;&nbsp;&nbsp;"critic_id": 2,   
-  &nbsp;&nbsp;}
-<br>}
+&nbsp;&nbsp;PUT request body should have the following format:<br>
+&nbsp;&nbsp;Example:
+&nbsp;&nbsp;<br>{
+ &nbsp;&nbsp;<br>&nbsp;&nbsp;"data": {
+    &nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;"content": "New content...",
+    &nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;"score": 3,
+    &nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;"critic_id": 2,   
+  &nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;<br>}
 
 - DELETE requests to /reviews/:reviewId will delete the review from the database<br>
 
