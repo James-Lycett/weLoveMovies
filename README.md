@@ -26,7 +26,6 @@ Example:
     <br>&nbsp;&nbsp;&nbsp;&nbsp;"critic_id": 2,   
   <br>&nbsp;&nbsp;}
 <br>}
-<br>
 
 - DELETE requests to /reviews/:reviewId will delete the review from the database<br>
 
