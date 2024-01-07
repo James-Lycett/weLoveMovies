@@ -1,5 +1,13 @@
 # weLoveMovies
-weLoveMovies is a REST API designed to serve theater sites with theater and movie information including theater addresses, what movies they are showing, and information about the movies, including reviews.
+weLoveMovies is a demo API designed to serve theater sites with theater and movie information including theater addresses, what movies they are showing, and information about the movies, including reviews.
+
+## Links
+The API base url is: https://welovemovies-backend-ksdj.onrender.com
+
+## Technology
+ - JavaScript
+ - Node.js
+ - Express
 
 ## How to use weLoveMovies API
 ### /theaters Route
